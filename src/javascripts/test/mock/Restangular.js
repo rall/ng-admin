@@ -18,6 +18,7 @@ define('mock/Restangular', [
         customPOST: function() { return mixins.buildPromise({}); },
         customPUT:  function() { return mixins.buildPromise({}); },
         customDELETE: function() { return mixins.buildPromise({}); },
+        stripRestangular: function(element) { return element },
     };
 
     return Restangular;
