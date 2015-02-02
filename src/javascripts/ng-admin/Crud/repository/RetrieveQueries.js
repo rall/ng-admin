@@ -24,10 +24,12 @@ define(function (require) {
      * @returns {promise} (list of fields (with their values if set) & the entity name, label & id-
      */
     RetrieveQueries.prototype.getOne = function (view, entityId) {
-        return this.Restangular
+        var Restangular = this.Restangular;
+        return Restangular
             .oneUrl(view.entity.name(), this.config.getRouteFor(view, entityId))
             .get()
             .then(function (response) {
+                response.data = Restangular.stripRestangular(response.data);
                 return view.mapEntry(response.data);
             });
     };
@@ -113,9 +115,14 @@ define(function (require) {
         }
 
         // Get grid data
-        return this.Restangular
+        var Restangular = this.Restangular;
+        return Restangular
             .allUrl(listView.entity.name(), this.config.getRouteFor(listView))
-            .getList(params);
+            .getList(params)
+            .then(function(response) {
+                response.data = Restangular.stripRestangular(response.data);
+                return response;
+            });
     };
 
     /**
