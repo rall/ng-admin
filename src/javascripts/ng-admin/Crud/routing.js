@@ -155,7 +155,7 @@ define(function (require) {
         $stateProvider
             .state('edit-batch', {
                 parent: 'main',
-                url: '/edit/:entity?search&sortField&sortDir',
+                url: '/edit-batch/:entity?search&sortField&sortDir',
                 controller: 'FormController',
                 controllerAs: 'formController',
                 templateProvider: templateProvider('EditBatchView', editBatchTemplate),
