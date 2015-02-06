@@ -14,8 +14,10 @@ define(function () {
             link: function ($scope) {
                 $scope.gotoEdit = function () {
                     debugger;
-                    var entity = $scope.entity();
-                    $location.path('/edit/' + entity.name() + '/' + $scope.entry().identifierValue);
+                    var entity = $scope.entity(),
+                        entry  = $scope.entry();
+                    var entryPath = entry ? '/' + entry.identifierValue : '';
+                    $location.path('/edit/' + entity.name() + entryPath);
                 };
             },
             template:
