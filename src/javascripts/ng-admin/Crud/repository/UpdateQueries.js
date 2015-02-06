@@ -25,6 +25,7 @@ define(function (require) {
      */
     UpdateQueries.prototype.updateOne = function (view, rawEntity) {
         console.warn("updateOne", view, rawEntity);
+        debugger;
         var entityId = rawEntity[view.getEntity().identifier().name()],
             method = view.getEntity().updateMethod(),
             url = this.Restangular.oneUrl(view.entity.name(), this.config.getRouteFor(view, entityId));
