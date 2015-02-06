@@ -30,6 +30,7 @@ define(function () {
     };
 
     FormController.prototype.validate = function (form, $event) {
+        debugger;
         $event.preventDefault();
         this.progression.start();
 

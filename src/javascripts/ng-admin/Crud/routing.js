@@ -135,15 +135,18 @@ define(function (require) {
                 resolve: {
                     view: viewProvider('EditView'),
                     entry: ['$stateParams', 'RetrieveQueries', 'view', function ($stateParams, RetrieveQueries, view) {
+                        debugger;
                         return RetrieveQueries.getOne(view, $stateParams.id);
                     }],
                     referencedValues: ['RetrieveQueries', 'view', 'entry', function (RetrieveQueries, view, entry) {
+                        debugger;
                         return RetrieveQueries.getReferencedValues(view.getReferences(), null);
                     }],
                     referencedListValues: ['$stateParams', 'RetrieveQueries', 'view', 'entry', function ($stateParams, RetrieveQueries, view, entry) {
                         var sortField = $stateParams.sortField,
                             sortDir = $stateParams.sortDir;
 
+                        debugger;
                         return RetrieveQueries.getReferencedListValues(view, sortField, sortDir, entry.identifierValue);
                     }]
                 }
