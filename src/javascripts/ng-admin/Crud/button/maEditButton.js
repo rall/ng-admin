@@ -15,9 +15,15 @@ define(function () {
                 $scope.gotoEdit = function () {
                     debugger;
                     var entity = $scope.entity(),
-                        entry  = $scope.entry();
-                    var entryPath = entry ? '/' + entry.identifierValue : '';
-                    $location.path('/edit/' + entity.name() + entryPath);
+                        entry  = $scope.entry(),
+                        path   = '/edit/' + entity.name();
+                    if (entry) {
+                        $location.path(path + '/' + entry.identifierValue);
+                    } else {
+                        var search = $location.search().search;
+                        $location.path(path);
+                        $location.search({ search: search });
+                    }
                 };
             },
             template:
