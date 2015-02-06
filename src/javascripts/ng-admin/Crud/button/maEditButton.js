@@ -13,6 +13,7 @@ define(function () {
             },
             link: function ($scope) {
                 $scope.gotoEdit = function () {
+                    debugger;
                     var entity = $scope.entity();
                     $location.path('/edit/' + entity.name() + '/' + $scope.entry().identifierValue);
                 };

@@ -116,6 +116,7 @@ define(function () {
      * @param {$event} $event
      */
     FormController.prototype.submitEdition = function (form, $event) {
+        debugger;
         var progression = this.progression,
             notification = this.notification,
             object = this.validate(form, $event);
