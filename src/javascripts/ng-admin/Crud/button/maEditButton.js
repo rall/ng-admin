@@ -20,7 +20,7 @@ define(function () {
                         $location.path('/edit/' + entity.name() + '/' + entry.identifierValue);
                     } else {
                         var search = $location.search().search;
-                        $location.path('/edit-batch/' + entity.name(););
+                        $location.path('/edit-batch/' + entity.name());
                         $location.search({ search: search });
                     }
                 };
