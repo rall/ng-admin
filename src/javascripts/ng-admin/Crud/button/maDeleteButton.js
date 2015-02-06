@@ -13,8 +13,10 @@ define(function () {
             },
             link: function ($scope) {
                 $scope.gotoDelete = function () {
-                    var entity = $scope.entity();
-                    $location.path('/delete/' + entity.name() + '/' + $scope.entry().identifierValue);
+                    var entity = $scope.entity(),
+                        entry  = $scope.entry();
+                    var entryPath = entry ? '/' + entry.identifierValue : '';
+                    $location.path('/delete/' + entity.name() + entryPath);
                 };
             },
             template:
