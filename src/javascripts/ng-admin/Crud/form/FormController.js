@@ -140,6 +140,7 @@ define(function () {
      * @param {View} entry
      */
     FormController.prototype.edit = function (entry) {
+        debugger;
         this.$location.path('/edit/' + entry.entityName  + '/' + entry.identifierValue);
     };
 

@@ -7,6 +7,7 @@ define(function (require) {
         showTemplate = require('text!./show/show.html'),
         createTemplate = require('text!./form/create.html'),
         editTemplate = require('text!./form/edit.html'),
+        editBatchTemplate = require('text!./form/edit-batch.html'),
         deleteTemplate = require('text!./delete/delete.html');
 
     function templateProvider(viewName, defaultView) {
@@ -146,9 +147,23 @@ define(function (require) {
                         var sortField = $stateParams.sortField,
                             sortDir = $stateParams.sortDir;
 
-                        debugger;
                         return RetrieveQueries.getReferencedListValues(view, sortField, sortDir, entry.identifierValue);
                     }]
+                }
+            });
+
+        $stateProvider
+            .state('edit-batch', {
+                parent: 'main',
+                url: '/edit/:entity?search&sortField&sortDir',
+                controller: 'FormController',
+                controllerAs: 'formController',
+                templateProvider: templateProvider('EditBatchView', editBatchTemplate),
+                params: {
+                    search: {}
+                },
+                resolve: {
+                    view: viewProvider('EditBatchView'),
                 }
             });
 
