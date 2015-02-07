@@ -7,7 +7,6 @@ define(function (require) {
         showTemplate = require('text!./show/show.html'),
         createTemplate = require('text!./form/create.html'),
         editTemplate = require('text!./form/edit.html'),
-        editBatchTemplate = require('text!./form/edit-batch.html'),
         deleteTemplate = require('text!./delete/delete.html');
 
     function templateProvider(viewName, defaultView) {
@@ -153,17 +152,13 @@ define(function (require) {
             });
 
         $stateProvider
-            .state('edit-batch', {
-                parent: 'main',
-                url: '/edit-batch/:entity?search&sortField&sortDir',
-                controller: 'FormController',
-                controllerAs: 'formController',
-                templateProvider: templateProvider('EditBatchView', editBatchTemplate),
+            .state('batch', {
+                parent: 'edit',
+                url: '/batch/:entity?search&sortField&sortDir',
                 params: {
-                    search: {}
-                },
-                resolve: {
-                    view: viewProvider('EditBatchView'),
+                    search: {},
+                    sortField: null,
+                    sortDir: null
                 }
             });
 
