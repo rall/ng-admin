@@ -19,6 +19,7 @@ define(function () {
     };
 
     AppController.prototype.displayHome = function () {
+        debugger;
         this.$location.path('dashboard');
     };
 
