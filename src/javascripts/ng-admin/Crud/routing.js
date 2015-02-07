@@ -122,16 +122,9 @@ define(function (require) {
         $stateProvider
             .state('edit', {
                 parent: 'main',
-                url: '/edit/:entity/:id?sortField&sortDir',
                 controller: 'FormController',
                 controllerAs: 'formController',
                 templateProvider: templateProvider('EditView', editTemplate),
-                params: {
-                    entity: {},
-                    id: null,
-                    sortField: null,
-                    sortDir: null
-                },
                 resolve: {
                     view: viewProvider('EditView'),
                     entry: ['$stateParams', 'RetrieveQueries', 'view', function ($stateParams, RetrieveQueries, view) {
@@ -148,6 +141,18 @@ define(function (require) {
 
                         return RetrieveQueries.getReferencedListValues(view, sortField, sortDir, entry.identifierValue);
                     }]
+                }
+            });
+
+        $stateProvider
+            .state('one', {
+                parent: 'edit',
+                url: '/one/:entity/:id?sortField&sortDir',
+                params: {
+                    entity: {},
+                    id: null,
+                    sortField: null,
+                    sortDir: null
                 }
             });
 
